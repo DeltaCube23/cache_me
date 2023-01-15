@@ -7,6 +7,14 @@ import (
 )
 
 // Base Structure for Cache
+type Cache interface {
+	Put(key, value interface{}) error
+	Get(key interface{}) (interface{}, error)
+	RemoveElement(ele *list.Element)
+	GetLength() int
+	GetStats()
+}
+
 type Base struct {
 	store map[interface{}]*list.Element
 	len   int
